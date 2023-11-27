@@ -1,6 +1,6 @@
 function  Footer() {
     return (
-      <footer>
+      <footer className="text-red-500">
           <small>Designed and developed for Mauricio Meza ©2023. all rights reserved.</small>
       </footer>
     );
