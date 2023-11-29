@@ -1,5 +1,5 @@
 .Header {
-    @apply h-xl flex justify-between shadow bg-white text-gray-700;
+    @apply h-xl flex justify-between shadow bg-white text-gray-700 relative;
     
 }
 .container {
@@ -15,8 +15,4 @@
 }
 .link{
     @apply flex items-center px-4 h-xl hover:bg-white;
-}
-
-.icon {
-    @apply h-6 w-6;
 }

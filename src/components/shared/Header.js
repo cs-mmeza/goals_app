@@ -1,21 +1,22 @@
-import "./Header.css";
-import { ReactComponent as Logo} from "../../img/logo.svg";
-import { ReactComponent as Perfil} from "../../img/perfil.svg";
+import styles from "./Header.module.css";
+import { ReactComponent as LogoSVG } from "../../img/logo.svg";
+import { ReactComponent as ProfileSVG } from "../../img/perfil.svg";
+import Links from "./Links";
 
 
-function  Header() {
+function Header() {
   return (
-    <div className="Header">
-        <div className="container">
-          <Logo className="logo"/>
-          <a href="/" className="title">Goals App</a>
-        </div>
-        <nav>
-          <a href="perfil" className="link">
-            <Perfil className="icon"/>
-          </a>
-        </nav>
-    </div>
+    <header className={styles.Header}>
+      <div className={styles.container}>
+        <LogoSVG className={styles.logo} />
+        <a href="/" className={styles.title}>Goals App</a>
+      </div>
+      <nav>
+        <Links
+          href="/profile"
+          Icon={ProfileSVG} />
+      </nav>
+    </header>
   );
 }
 
