@@ -1,0 +1,3 @@
+    .buttons {
+        @apply bg-gradient-to-r from-gray-700 via-gray-200 px-4 py-3 flex justify-between;
+    }

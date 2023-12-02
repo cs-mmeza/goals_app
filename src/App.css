@@ -1,5 +1,5 @@
 .card {
-  @apply rounded-xl m-4 text-gray-700 text-xs mx-4 nm-flat-white;
+  @apply rounded-xl m-4 text-gray-700 text-xs mx-4 nm-flat-white overflow-hidden;
 }
 
 .button {
@@ -7,5 +7,21 @@
 }
 
 .button--black {
-  @apply text-white nm-flat-gray-700 hover:bg-gray-700;
+  @apply text-white nm-flat-gray-700 hover:bg-gray-800;
+}
+
+.button--red {
+  @apply text-red-500 nm-flat-gray-100 border border-red-500 hover:bg-red-500 hover:text-white;
+}
+
+.button--gray {
+  @apply nm-flat-gray-100 hover:bg-gray-200;
+}
+
+.label {
+  @apply block uppercase text-xs font-bold mb-6;
+}
+
+.input {
+  @apply nm-inset-gray-100 w-full border rounded-xl p-2 focus:outline-none focus:bg-white focus:border-gray-500;
 }
