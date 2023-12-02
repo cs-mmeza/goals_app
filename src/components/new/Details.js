@@ -1,50 +1,107 @@
+import { useEffect, useState } from "react";
 import styles from "./Details.module.css";
+
 function Details() {
-    const icon = ["💻", "✈️", "⚽", "📚", "💵", "🏃"];
+    const [form, setForm] = useState({
+        details: '',
+        events: 1,
+        period: 'weekly',
+        icon: '🏃',
+        goal: 52,
+        duration: '2030-01-01',
+        completed: 0
+    });
+
+    const {details, events, period, icon, goal, duration, completed} = form;
+
+//1. write on setForm and update the previous state with the new state.
+//2. copy all elements from previous state.
+//3. And update the prop that change the object value in event.target.value is the input's value.
+    const onChange = (event, prop) => { 
+        setForm(state => ({...state, [prop]: event.target.value}));
+        
+    }
+    useEffect(() => {
+        //console.log(form);
+    } , [form] )
+
+    const create = async () => {
+        console.log(form);
+    }
+    const icons = ["💻", "✈️", "⚽", "📚", "💵", "🏃"];
+
     return (
         <div className="card">
             <form className="p-4">
                 <label className="label">
-                    What's you new goal?
-                    <input 
+                    describe you new goal?
+                    <input
                         className="input"
-                        placeholder="ex. run 62 times in a year"/>
+                        placeholder="ex. run 62 times in a year"
+                        value={details}
+                        onChange={e => onChange(e, 'details')} 
+                        />
                 </label>
                 <label className="label">
                     How long would it take in your own peace? <span>(ex. 1 time weekly)</span>
                     <div className="flex mb-6">
-                        <input 
+                        <input
                             className="input mr-6"
-                            type="number"/>
-                        <select className="input">
+                            type="number"
+                            value={events}
+                            onChange={e => onChange(e, 'events')}  />
+                            
+                        <select className="input"
+                                value={period}
+                                onChange={e => onChange(e, 'period')} 
+                                >
                             <option value="day">daily</option>
                             <option value="week">weekly</option>
                             <option value="month">monthly</option>
                             <option value="year">yearly</option>
                         </select>
-                    </div>  
+                    </div>
                 </label>
                 <label className="label">
-                    Do you have a deadline?
-                    <input 
+                    What is the goal?
+                    <input
                         className="input"
-                        type="date"/>
+                        type="date" 
+                        value={goal}
+                        onChange={e => onChange(e, 'goal')} />
                 </label>
                 <label className="label">
-                    How many times have you achive this goal before?
-                    <input 
+                    Whats your deadline?
+                    <input
+                        type="date"
                         className="input"
-                        type="number" />
+                        value={duration}
+                        onChange={e => onChange(e, 'duration')} 
+                        />
                 </label>
                 <label className="label">
-                    You can chose the icon that you thing fits better this goal.
-                    <select className="input">
-                        {icon.map(option => <option value={option}>{option}</option>)}
+                    How many times do you want to achive this goal?
+                    <input
+                        className="input"
+                        type="number" 
+                        value={completed}
+                        onChange={e => onChange(e, 'completed')} />
+                </label>
+                <label className="label">
+                    You an icon that suits this goal better.
+                    <select className="input"
+                            value={icon}
+                            onChange={e => onChange(e, 'icon')} >
+                        {icons.map(option => <option value={option}>{option}</option>)}
                     </select>
                 </label>
             </form>
             <div className={styles.buttons}>
-                <button className="button button--black">Create</button>
+                <button 
+                    className="button button--black"
+                    onClick={create}
+                >Create
+                </button>
                 <button className="button button--gray">Cancel</button>
             </div>
         </div>
