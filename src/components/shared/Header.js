@@ -13,7 +13,7 @@ function Header() {
       </div>
       <nav>
         <Links
-          href="/profile"
+          to="/profile"
           Icon={ProfileSVG} />
       </nav>
     </header>

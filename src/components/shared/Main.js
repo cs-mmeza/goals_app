@@ -8,11 +8,11 @@ function Main({ children }) {
     <div className={styles.body}>
       <aside className={styles.aside}>
         <Links
-          href="/list"
+          to="/list"
           text='Goals list'
           Icon={ListSVG} />
         <Links
-          href="/create"
+          to="/new"
           text='Create new goal'
           Icon={NewSVG} />
       </aside>
