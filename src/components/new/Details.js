@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import styles from "./Details.module.css";
+import { Context } from "../../services/Memory";
+import { useNavigate } from "react-router-dom";
 
 function Details() {
     const [form, setForm] = useState({
@@ -11,6 +13,8 @@ function Details() {
         duration: '2030-01-01',
         completed: 0
     });
+
+    const [state, dispatch] = useContext(Context);
 
     const {details, events, period, icon, goal, duration, completed} = form;
 
@@ -25,8 +29,11 @@ function Details() {
         //console.log(form);
     } , [form] )
 
+    const navegate = useNavigate();
+
     const create = async () => {
-        console.log(form);
+        dispatch({type: 'create', goal: form });
+        navegate("/list");
     }
     const icons = ["💻", "✈️", "⚽", "📚", "💵", "🏃"];
 
@@ -63,10 +70,10 @@ function Details() {
                     </div>
                 </label>
                 <label className="label">
-                    What is the goal?
+                    How many time do you want to complete this goal?
                     <input
                         className="input"
-                        type="date" 
+                        type="number" 
                         value={goal}
                         onChange={e => onChange(e, 'goal')} />
                 </label>
@@ -80,7 +87,7 @@ function Details() {
                         />
                 </label>
                 <label className="label">
-                    How many times do you want to achive this goal?
+                    How many have you completed this goal?
                     <input
                         className="input"
                         type="number" 
