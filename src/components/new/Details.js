@@ -1,9 +1,12 @@
 import { useEffect, useState, useContext } from "react";
 import styles from "./Details.module.css";
 import { Context } from "../../services/Memory";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Details() {
+
+    const { id } = useParams();
+
     const [form, setForm] = useState({
         details: '',
         events: 1,
@@ -25,16 +28,37 @@ function Details() {
         setForm(state => ({...state, [prop]: event.target.value}));
         
     }
-    useEffect(() => {
-        //console.log(form);
-    } , [form] )
 
     const navegate = useNavigate();
 
-    const create = async () => {
+    useEffect(() => {
+        const metaMemory = state.objects[id];
+        if (!id) return;
+        if(!metaMemory) {
+            return navegate("/404");
+        }
+        setForm(state.objects[id]);
+    } , [id] )
+
+    const create = () => {
         dispatch({type: 'create', goal: form });
         navegate("/list");
     }
+
+    const update = () => {
+        dispatch({type: 'update', goal: form });
+        navegate("/list");
+    }
+
+    const remove = () => {
+        dispatch({type: 'remove', id });
+        navegate("/list");
+    }
+
+    const cancel = () => {
+        navegate("/list");
+    }
+
     const icons = ["💻", "✈️", "⚽", "📚", "💵", "🏃"];
 
     return (
@@ -104,12 +128,26 @@ function Details() {
                 </label>
             </form>
             <div className={styles.buttons}>
-                <button 
+               {!id && <button 
                     className="button button--black"
                     onClick={create}
                 >Create
+                </button>}
+                { id && <button 
+                    className="button button--black"
+                    onClick={update}
+                >Update
+                </button>}
+                { id && <button 
+                    className="button button--red"
+                    onClick={remove}
+                >Delete
+                </button>}
+                <button 
+                    className="button button--gray"
+                    onClick={cancel}
+                >Cancel
                 </button>
-                <button className="button button--gray">Cancel</button>
             </div>
         </div>
     );

@@ -1,12 +1,13 @@
+import { Link } from 'react-router-dom';
 import styles from './Goal.module.css';
 
-function Goal({ icon, events, period, details, goal, completed }) {
+function Goal({ id, icon, events, period, details, goal, completed }) {
     return (
-        <div className={styles.goal + " card"}>
+        <Link to={`/list/${id}`} className={styles.goal + " card"}>
             <div className='flex items-center'>
                 <div className={styles.icon}>{icon}</div>
                 <p className='text-xl ml-5 mr-10'>{events}
-                    <sub className='text-xs text-gray-500 ml-1'>{period}</sub></p>
+                    <sub className='text-xs text-gray-500 ml-1'>/ {period}</sub></p>
                 <p>{details}</p>
             </div>
             <div className='flex'>
@@ -21,7 +22,7 @@ function Goal({ icon, events, period, details, goal, completed }) {
                 </div>
             </div>
             <button className='button button--black'>Completed</button>
-        </div>
+        </Link>
     );
 }
 
