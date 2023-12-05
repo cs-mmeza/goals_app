@@ -31,14 +31,15 @@ function Details() {
 
     const navegate = useNavigate();
 
+    const goalMemory = state.objects[id];
+
     useEffect(() => {
-        const metaMemory = state.objects[id];
         if (!id) return;
-        if(!metaMemory) {
+        if(!goalMemory) {
             return navegate("/404");
         }
-        setForm(state.objects[id]);
-    } , [id] )
+        setForm(goalMemory);
+    } , [id, goalMemory, navegate] )
 
     const create = () => {
         dispatch({type: 'create', goal: form });
@@ -123,7 +124,7 @@ function Details() {
                     <select className="input"
                             value={icon}
                             onChange={e => onChange(e, 'icon')} >
-                        {icons.map(option => <option value={option}>{option}</option>)}
+                        {icons.map(option => <option key={option} value={option}>{option}</option>)}
                     </select>
                 </label>
             </form>
