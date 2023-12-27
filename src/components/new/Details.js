@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react";
 import styles from "./Details.module.css";
 import { Context } from "../../services/Memory";
 import { useNavigate, useParams } from "react-router-dom";
+import { createGoal, removeGoal, updateGoal } from "../../services/Requests";
 
 function Details() {
 
@@ -41,18 +42,21 @@ function Details() {
         setForm(goalMemory);
     } , [id, goalMemory, navegate] )
 
-    const create = () => {
-        dispatch({type: 'create', goal: form });
+    const create = async () => {
+        const newGoal = await createGoal();
+        dispatch({type: 'create', goal: newGoal });
         navegate("/list");
     }
 
-    const update = () => {
-        dispatch({type: 'update', goal: form });
+    const update = async () => {
+        const updatedGoal = await updateGoal();
+        dispatch({type: 'update', goal: updatedGoal });
         navegate("/list");
     }
 
-    const remove = () => {
-        dispatch({type: 'remove', id });
+    const remove = async () => {
+        const idDelete = await removeGoal();
+        dispatch({type: 'remove', id: idDelete });
         navegate("/list");
     }
 

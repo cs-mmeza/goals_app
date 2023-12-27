@@ -5,8 +5,23 @@ import List from './components/list/List.js';
 import Details from './components/new/Details.js';
 import NotFound from './components/shared/NotFound.js';
 import Modal from './components/shared/Modal.js';
+import { useContext, useEffect } from 'react';
+import { Context } from './services/Memory.js';
+import { requestGoals } from './services/Requests.js';
 
 function App() { // Goal esta siendo renderizado de la etiqueta main dentro de Main.js
+  const [, dispatch] = useContext(Context);
+
+  useEffect(() => {
+    requestGoals()
+      .then((goals) => {
+        dispatch({ type: 'place', goals });
+      })
+      .catch((error) => {
+        console.error('Error al obtener las metas:', error);
+      });
+  
+  }, [dispatch]);
   return ( // :id = means is a dynamic value
     <Routes>
       <Route path="/" element={<Layout />} >

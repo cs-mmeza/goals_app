@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "details": "Run for 30 min",
+    "period": "daily",
+    "event": 1,
+    "icon": "🏃‍♂️",
+    "goal": 365,
+    "duration": "2030-01-01",
+    "completed": 5
+  },
+  {
+    "id": "2",
+    "details": "Read a book",
+    "period": "yearly",
+    "event": 6,
+    "icon": "📚",
+    "goal": 12,
+    "duration": "2030-01-01",
+    "completed": 0
+  },
+  {
+    "id": "3",
+    "details": "Travel to a national park",
+    "period": "monthly",
+    "event": 1,
+    "icon": "✈️",
+    "goal": 60,
+    "duration": "2030-01-01",
+    "completed": 40
+  },
+  {
+    "completed": "0",
+    "details": "Create an app",
+    "duration": "2030-01-01",
+    "events": 1,
+    "goal": 2,
+    "icon": "💻",
+    "id": "0.3825609499109577",
+    "period": "year"
+  }
+]

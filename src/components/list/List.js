@@ -6,12 +6,14 @@ import { Outlet } from "react-router-dom";
 
 function List() {
     const [state] = useContext(Context);
-    
+
     return (
         <>
-            {state.order.map(id => <Goal key={id} {...state.objects[id]}></Goal>)}
+            {state.order.map(id => (
+                <Goal key={id} {...state.objects[id]}></Goal>
+            ))}
             <Outlet />
-        </> 
+        </>
     );
 }
 

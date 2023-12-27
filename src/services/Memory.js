@@ -1,12 +1,15 @@
+import React from "react";
 import { createContext, useReducer } from "react";
 
-const memory = localStorage.getItem('goals');
-const initState = memory
-    ? JSON.parse(memory)
-    : {
+// const memoria = localStorage.getItem('metas');
+const initState = {
     order: [],
-    objects: {}
-};
+    objects: {},
+  };
+  // memoria ? JSON.parse(memoria) : {
+  //     orden: [],
+  //     objetos: {}
+  // };
 
 function reductor(state, action) {
     switch (action.type) {
@@ -14,14 +17,15 @@ function reductor(state, action) {
             const goals = action.goals;
             const newState = {
                 order: goals.map(goal => goal.id),
-                objects: goals.reduce((object, goal) => ({ ...object, [goal.id]: goal }), {})
+                objects: goals.reduce(
+                    (object, goal) => ({ ...object, [goal.id]: goal }), {})
             };
-            localStorage.setItem('goals', JSON.stringify(newState))
+            // localStorage.setItem('goals', JSON.stringify(newState))
             return newState;
         };
 
         case 'create': {
-            const id = String(Math.random()); //creating random ids to simulate backend ids.
+            const id = action.goal.id; //String(Math.random()); //creating random ids to simulate backend ids.
             const newState = {
                 order: [...state.order, id],
                 objects: {
@@ -29,7 +33,7 @@ function reductor(state, action) {
                     [id]: action.goal
                 }
             };
-            localStorage.setItem('goals', JSON.stringify(newState))
+            // localStorage.setItem('goals', JSON.stringify(newState))
             return newState;
         };
         case 'update': {
@@ -39,7 +43,7 @@ function reductor(state, action) {
                 ...action.goal
             };
             const newState = { ...state };
-            localStorage.setItem('goals', JSON.stringify(newState))
+            // localStorage.setItem('goals', JSON.stringify(newState))
             return newState;
         };
         case 'remove': {
@@ -50,7 +54,7 @@ function reductor(state, action) {
                 order: newOrder,
                 objects: state.objects 
             };
-            localStorage.setItem('goals', JSON.stringify(newState))
+            // localStorage.setItem('goals', JSON.stringify(newState))
             return newState;
         };
         default:

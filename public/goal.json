@@ -1,0 +1,10 @@
+  {
+    "id": "2",
+    "details": "backend",
+    "period": "yearly",
+    "event": 6,
+    "icon": "📚",
+    "goal": 12,
+    "duration": "2030-01-01",
+    "completed": 0
+  }
