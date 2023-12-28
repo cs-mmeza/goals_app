@@ -1,4 +1,3 @@
-import Details from "../new/Details";
 
 function Modal({children}) {
     return (

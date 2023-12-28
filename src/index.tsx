@@ -6,7 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import Memory from './services/Memory';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const rootElement = document.getElementById("root")
+const root = ReactDOM.createRoot(rootElement as HTMLElement)
 root.render(
   <React.StrictMode>
     <Memory>
