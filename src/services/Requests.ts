@@ -1,30 +1,32 @@
-export async function requestGoals() {
+import { GoalType } from "../types/GoalType";
+
+export async function requestGoals() : Promise<GoalType[]> { // ts working with promises.
     const response = await fetch("/api/goals");
-    const goals = await response.json();
+    const goals: GoalType[] = await response.json();
     return goals;
 }
 
-export async function requestGoal(id) {
+export async function requestGoal(id: number) : Promise<GoalType>{ //returning just one type
     const response = await fetch(`/api/goals${id}`);
-    const goal = await response.json();
+    const goal: GoalType = await response.json();
     return goal;
 }
 
-export async function createGoal(goal) {
+export async function createGoal(goal: GoalType) : Promise<GoalType>{
     const response = await fetch("/api/goals", {
         method: "POST",
         body: JSON.stringify(goal),
         headers: {
             "content-type": "application/json; charset=UTF-8",
-        },
+        }
     });
 
-    const goalCreated = response.json();
+    const goalCreated: GoalType = await response.json();
     console.log("New goal created!", goalCreated);
     return goalCreated;
 }
 
-export async function updateGoal(goal) {
+export async function updateGoal(goal: GoalType): Promise<GoalType> {
     const response = await fetch(`/api/goals/${goal.id}`, {
         method: "PUT",
         body: JSON.stringify(goal),
@@ -32,12 +34,12 @@ export async function updateGoal(goal) {
             "content-type": "application/json; charset=UTF-8",
         },
     });
-    const updatedGoal = await response.json();
+    const updatedGoal: GoalType = await response.json();
     console.log("goal updated", updatedGoal);
     return updatedGoal;
 }
 
-export async function removeGoal(id) {
+export async function removeGoal(id: number): Promise<void> {
     await fetch(`/api/goals/${id}`, {
         method: "DELETE",
     });

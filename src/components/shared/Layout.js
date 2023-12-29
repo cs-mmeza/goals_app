@@ -1,5 +1,5 @@
 import Header from './Header.js'
-import Main from './Main.js'
+import Main from './Main.tsx'
 import Footer from './Footer.js'
 import { Outlet } from 'react-router-dom';
 

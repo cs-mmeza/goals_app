@@ -60,7 +60,8 @@ function Details() {
     }
 
     const remove = async () => {
-        await removeGoal(form.id);
+        const id = form.id;
+        await removeGoal(id);
         dispatch({ type: 'remove', id: form.id });
         navegate("/list");
     }

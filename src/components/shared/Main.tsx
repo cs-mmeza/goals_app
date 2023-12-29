@@ -3,7 +3,11 @@ import Links from "./Links";
 import { ReactComponent as ListSVG } from "../../img/lista.svg";
 import { ReactComponent as NewSVG } from "../../img/nueva.svg";
 
-function Main({ children }) {
+interface MainProps{
+  children: React.ReactNode;
+}
+
+function Main({ children }: MainProps) {
   return ( // a tag without name  in html is called a fragment.
     <div className={styles.body}>
       <aside className={styles.aside}>

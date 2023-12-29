@@ -4,10 +4,10 @@ import Layout from './components/shared/Layout.js';
 import List from './components/list/List.js';
 import Details from './components/new/Details.js';
 import NotFound from './components/shared/NotFound.js';
-import Modal from './components/shared/Modal.js';
+import Modal from './components/shared/Modal';
 import { useContext, useEffect } from 'react';
 import { Context } from './services/Memory.js';
-import { requestGoals } from './services/Requests.js';
+import { requestGoals } from './services/Requests';
 
 function App() { // Goal esta siendo renderizado de la etiqueta main dentro de Main.js
   const [, dispatch] = useContext(Context);
