@@ -1,8 +1,8 @@
 import { useEffect, useState, useContext } from "react";
 import styles from "./Details.module.css";
-import { Context } from "../../services/Memory";
+import { ContextGoals } from "../../../memory/Goals";
 import { useNavigate, useParams } from "react-router-dom";
-import { createGoal, removeGoal, updateGoal } from "../../services/Requests";
+import { createGoal, removeGoal, updateGoal } from "../../../services/Requests";
 
 function Details() {
 
@@ -20,7 +20,7 @@ function Details() {
         completed: 0
     });
 
-    const [state, dispatch] = useContext(Context);
+    const [state, dispatch] = useContext(ContextGoals);
 
     const { details, frequency, term, icon, goal, end_date, completed } = form;
 
@@ -39,13 +39,12 @@ function Details() {
     const goalMemory = state.objects[id];
 
     useEffect(() => {
-        console.log("Current Form State:", form);
         if (!id) return;
         if (!goalMemory) {
             return navegate("/404");
         }
         setForm(goalMemory);
-    }, [id, goalMemory, navegate])
+    }, [id, goalMemory, navegate]);
 
     const create = async () => {
         const newGoal = await createGoal(form);

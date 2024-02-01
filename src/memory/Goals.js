@@ -65,15 +65,15 @@ function reductor(state, action) {
 }
 // reductor(initState, { type: 'place', goals: listMock });
 
-export const Context = createContext(null);
+export const ContextGoals = createContext(null);
 
-function Memory({ children }) {
-    const [state, dispatch] = useReducer(reductor, initState);
+function MemoryGoals({ children }) {
+    const value = useReducer(reductor, initState);
     return (
-        <Context.Provider value={[state, dispatch]}>
+        <ContextGoals.Provider value={value}>
             {children}
-        </Context.Provider>
+        </ContextGoals.Provider>
     );
 }
 
-export default Memory;
+export default MemoryGoals;

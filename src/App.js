@@ -1,43 +1,50 @@
 import './App.css';
-import { Routes, Route } from 'react-router';
+import { Routes, Route, Navigate } from 'react-router';
 import Layout from './components/shared/Layout.js';
-import List from './components/list/List.js';
-import Details from './components/new/Details.js';
+import List from './components/Private/list/List.js';
+import Details from './components/Private/new/Details.js';
 import NotFound from './components/shared/NotFound.js';
 import Modal from './components/shared/Modal';
 import { useContext, useEffect } from 'react';
-import { Context } from './services/Memory.js';
+import { ContextGoals } from './memory/Goals.js';
 import { requestGoals } from './services/Requests';
+import Access from './components/Public/Access/Access';
+import Register from './components/Public/register/Register';
+import Authenticate from './components/shared/Authenticate';
 
 function App() { // Goal esta siendo renderizado de la etiqueta main dentro de Main.js
-  const [, dispatch] = useContext(Context);
+    const [, dispatch] = useContext(ContextGoals);
 
-  useEffect(() => {
-    requestGoals()
-      .then((goals) => {
-        dispatch({ type: 'place', goals });
-      })
-      .catch((error) => {
-        console.error('Error al obtener las metas:', error);
-      });
-  
-  }, [dispatch]);
-  return ( // :id = means is a dynamic value
-    <Routes>
-      <Route path="/" element={<Layout />} >
-        <Route index element={<List />} />
-        <Route path="/list" element={<List />} >
-          <Route path="/list/:id" element={
-            <Modal >
-              <Details />
-            </Modal>
-          } />
-        </Route>
-        <Route path="/new" element={<Details />} />
-      </Route>
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  );
+    useEffect( () => {
+        (async function () {
+          const goals = await requestGoals();
+          dispatch({ type: "place", goals });
+        })();
+      }, [dispatch]);
+
+      return (
+        <Routes>
+          <Route path="/"
+            element={<Navigate to="/list" />}
+          />
+          <Route element={<Layout />}>
+            <Route path="/access" element={<Access />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          <Route element={<Layout privato />}>
+            <Route element={<Authenticate />} >
+              <Route path="/list" element={<List />}>
+                <Route
+                  path="/list/:id"
+                  element={<Modal><Details /></Modal>}
+                />
+              </Route>
+              <Route path="/new" element={<Details />} />
+            </Route>
+          </Route>
+        </Routes>
+      );
 }
 
 export default App;

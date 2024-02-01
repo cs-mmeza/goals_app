@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './Goal.module.css';
-import { GoalType } from '../../types/GoalType';
+import { GoalType } from '../../../types/GoalType';
 
 
 interface GoalProps extends GoalType {}

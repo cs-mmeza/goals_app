@@ -3,7 +3,7 @@
 }
 
 .button {
- @apply text-sm font-bold py-1 px-4 rounded-full;
+  @apply text-sm font-bold py-1 px-4 rounded-full;
 }
 
 .button--black {
@@ -25,3 +25,7 @@
 .input {
   @apply nm-inset-gray-100 w-full border rounded-xl p-2 focus:outline-none focus:bg-white focus:border-gray-500;
 }
+
+.buttons {
+    @apply bg-gradient-to-r from-gray-700 via-gray-200 to-gray-200 px-4 py-3 flex justify-between;
+  }
