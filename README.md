@@ -1,55 +1,34 @@
-# Goals List App (demo)
-
-This project was made as part of the Full-Stack Developer Certificate from [Academia X](https://www.academia-x.com/). The proyect is personalized with new features.
-
-The version on this branch includes a demo of the user interface. 
-Where the user can:
-- Acces the List of Goals created
-- Create a new Goal
-- Edit a Goal
-- Remove a Goal
-
-
-Made Using:
-- React
-- React-Router
-- TailwindCSS
-
-
-This demos has a version that implements a conection to a CRUD API [(Link to repo)](https://github.com/cs-mmeza/api_goals_app) in [Public](https://github.com/cs-mmeza/goals_app/tree/public)
-
-Work in progress...
- ...User Authentication interface and implementation in [main](https://github.com/cs-mmeza/goals_app)
-
 # Goals List App (Demo)
+
 This project was created as part of the Full-Stack Developer Certificate program from [Academia X](https://www.academia-x.com/). The project has been personalized with new features.
+
+#### Technologies Used:
+- HTML/CSS
+- React
+- TailwindCSS
+- React-Router
 
 The version on this branch includes a demo of the user interface, where users can:
 
 ### Access the list of goals created.
-![App Main user interface](./public/App_interface.png)
+![App Main User Interface](./public/App_interface.png)
 
-### Create a new goal.
+### Create a New Goal.
 ![New Goal](./public/App_view_list.png)
 
-### Edit and Remove a goal.
-![Edit and remove form](./public/App_view_form.png)
+### Edit and Remove a Goal.
+![Edit and Remove Form](./public/App_view_form.png)
+
+This demo uses JSON files to simulate a database, but there is a version that connects to a PostgreSQL database with a [CRUD API](https://github.com/cs-mmeza/api_goals_app) in the repository's [Public](https://github.com/cs-mmeza/goals_app/tree/public) branch.
+
+Work in Progress 👷  
+...User authentication interface and implementation in the [main](https://github.com/cs-mmeza/goals_app/tree/main) branch.
 
 
-#### Technologies used:
-React
-TailwindCSS
-React-Router
-
-This demo has a version that implements a connection to a CRUD API[(Repo)](https://github.com/cs-mmeza/api_goals_app). in this Repo's [Public](https://github.com/cs-mmeza/goals_app/tree/public) branch.
-
-Work in Progress...
-...User authentication interface and implementation in [main] branch.
-
----
+----
 ## Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) .
 
 ## Available Scripts
 
